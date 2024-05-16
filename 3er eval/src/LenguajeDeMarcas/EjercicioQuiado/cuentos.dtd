@@ -1,0 +1,16 @@
+<!ELEMENT cuento (personajes, trama, etiqueta*)>
+<!ATTLIST cuento cod NMTOKEN #REQUIRED><!-- no podemos implementar en el dtd la faceta 1 letra + 2 números -->
+<!ATTLIST cuento titulo CDATA #REQUIRED>
+<!ATTLIST cuento genero (infantil|fantasia|terror) #IMPLIED>
+
+<!ELEMENT personajes (personaje+)>
+<!ELEMENT personaje (nombre, genero, descripcion?)>
+<!ATTLIST personaje id ID #REQUIRED
+                    tipo (principal|secundario|antagonista) "principal">
+<!ELEMENT trama (#PCDATA)>
+<!ELEMENT etiqueta EMPTY>
+<!ATTLIST etiqueta  nombre CDATA #REQUIRED>
+
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT genero (#PCDATA)> <!--no podemos implementar los varoles de masculino y femenino-->
+<!ELEMENT descripcion (#PCDATA)>

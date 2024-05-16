@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:annotation>
+    <xs:documentation>
+        <titulo>Ejemplo de repaso Cuentos</titulo>
+        <modulo>Lenguaje de Marcas y sistemas de gestion de la información</modulo>
+        <fecha_creacion>2024-04-10</fecha_creacion>
+        <autor>Filip Mlynarczyk</autor>
+    </xs:documentation>
+</xs:annotation>
+<!--elementos complejos -->
+<!--elemento raiz cunto (personajes, trama, etiqueta)-->
+    <xs:element name="cuento">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="personajes"/>
+                <xs:element ref="trama"/>
+                <xs:element ref="etiqueta" minOccurs="0" 
+                maxOccurs="unbounded"/>
+                <xs:element ref="precio" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute ref="cod" use="required"/>
+            <xs:attribute ref="titulo" use="required"/>
+            <xs:attribute ref="genero" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+<!-- elemento personajes (personaje+) -->
+    <xs:element name="personajes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="personaje" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+<!-- elemto personaje(nombre, genero, descripcion?)-->
+<xs:element name="personaje">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="nombre"/>
+                <xs:element ref="genero"/>
+                <xs:choice minOccurs="0" >
+                    <xs:element ref="descripcion"/>
+                    <xs:element ref="imagen"/>
+                    <xs:element ref="url"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute ref="id" use="required"/>
+            <xs:attribute ref="tipo" default="principal"/>
+        </xs:complexType>
+        </xs:element>
+
+        <!--elemento etiqueta-->
+    <xs:element name="etiqueta">
+        <xs:complexType>
+            <xs:attribute ref="nombre" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+        <!--elemento precio-->
+        <xs:element name="precio">
+            <xs:complexType>
+                <xs:simpleContent>
+                    <xs:extension base="precio_formato">
+                        <xs:attribute ref="moneda" default="eur"/>
+                    </xs:extension>
+                </xs:simpleContent>
+            </xs:complexType>
+        </xs:element>
+        <!-- tipo de dato nuevo definido por el usuario -->
+        <xs:simpleType name="precio_formato">
+            <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="4"/>
+            <xs:fractionDigits value="2"/>
+            </xs:restriction>
+        </xs:simpleType>
+
+        <!-- Elementos simples -->
+        <!-- Elementos simples de cuento-->
+        <xs:element name="trama" type="xs:string"/>
+        <!-- elementos simples de personaje -->
+        <xs:element name="nombre" type="xs:string"/>
+        <xs:element name="genero">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="masculino|femenino|neutro"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+        <xs:element name="descripcion" type="xs:string"/>
+        <xs:element name="imagen" type="xs:string"/>
+        <xs:element name="url" type="xs:string"/>
+
+
+        <!-- atributos -->
+        <!-- Atributos de cuento -->
+        <xs:attribute name="cod">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[A-Z]\d{2}"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="titulo" type="xs:string"/>
+        <xs:attribute name="genero">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="infantil"/>
+                    <xs:enumeration value="fantasia"/>
+                    <xs:enumeration value="terror"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <!-- atributos de personaje -->
+        <xs:attribute name="id" type="xs:ID"/>
+        <xs:attribute name="tipo">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="principal"/>
+                    <xs:enumeration value="secundario"/>
+                    <xs:enumeration value="antagonista"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+            <!-- atributo de etiqueta -->
+            <xs:attribute name="nombre" type="xs:string"/> 
+            <!-- atributo de precio-->
+            <xs:attribute name="moneda" type="xs:string"/>
+</xs:schema>

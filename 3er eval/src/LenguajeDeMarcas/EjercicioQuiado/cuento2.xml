@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cuento SYSTEM "cuentos.dtd">
+<cuento cod="B02" titulo="La leyenda del tesoro escondido" >
+    <personajes>
+        <personaje id="B1" tipo="principal">
+            <nombre> Juan </nombre>
+            <genero> Masculino </genero>
+        </personaje>
+        <personaje id="B2" tipo="secundario">
+            <nombre> Maria </nombre>
+            <genero> Femenino </genero>
+        </personaje>
+        <personaje id="B3" tipo="antagonista">
+            <nombre> El bandido </nombre>
+            <genero> Masculino </genero>
+        </personaje>
+    </personajes>
+    <trama> Juan y maria se embarcan en una emocionante aventura para encontrar un tesoro
+        escondido. A medida que avansan en su búsqueda, se encuentran con varios obstáculos,
+        como el bandido que intenta detenerlos. Con su determinación y valentía, logran superar 
+        todos los desafíos y encuentran finalmente el tesoro encondido. 
+    </trama>
+</cuento>

@@ -1,0 +1,12 @@
+definition.setTarget("testapp.loadtest.party");
+
+definition.setArrivalPhases([
+  { duration: 5 * 60, rate: 50, },  // 5 minutes,  5 new clients per second
+  { duration: 5 * 60, rate: 100, }, // 5 minutes, 10 new clients per second
+  { duration: 5 * 60, rate: 200, }, // 5 minutes, 20 new clients per second
+  { duration: 5 * 60, rate: 800, }, // 5 minutes, 40 new clients per second
+]);
+
+definition.session("stress test", function(session) {
+ // ...
+});
