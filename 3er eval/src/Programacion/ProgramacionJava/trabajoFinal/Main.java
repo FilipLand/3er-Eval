@@ -24,11 +24,11 @@ public class Main {
 
             System.out.println("Cuantas personas vais a jugar?");
             personasTotal = sc.nextInt();
+            sc.nextLine();
 
-            sc.nextLine();
             System.out.print("Cuantos jugadores nuevos sois?");
-            sc.nextLine();
             personasNuevas = sc.nextInt();
+            sc.nextLine();
 
             if (personasNuevas < 0 || personasTotal < 0) {
 
