@@ -62,6 +62,7 @@ public class Main {
     }
 
     public static void crearUsuario(List<Jugador> jugadores, Scanner sc, int numeroJugador) {
+
         String nombre1;
         String apellido1;
         Integer edad1;
