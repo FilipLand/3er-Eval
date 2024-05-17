@@ -68,7 +68,7 @@ public class Main {
         Integer nivelInicio = 1;
 
         numeroJugador++;
-        System.out.println("Jugador" + numeroJugador);
+        System.out.println("Jugador: " + numeroJugador);
         System.out.println("Introduce tu nombre");
         nombre1 = sc.nextLine();
 
