@@ -12,44 +12,18 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         try {
-            int opcion;
+            System.out.println("Bienvenido al juego del prisionero");
             int personasTotal;
             int personasNuevas;
-
-            Integer numeroJugador = 0;
             Scanner sc = new Scanner(System.in);
             List<Jugador> jugadores = new ArrayList<>();
-
-            opcion = opciones(sc);
             personasTotal = personasTotales(sc);
             personasNuevas = personasNuevasCant(sc);
 
             if (personasNuevas < 0 || personasTotal < 0) {
-
+                System.out.println("no puede ser negativo");
             } else {
-                switch (opcion) {
-                    case 1:
-                        if (personasNuevas == personasTotal) {
-                            for (int i = 0; i < personasTotal; i++) {
-                                sc.nextLine();
-                                crearUsuario(jugadores, sc, numeroJugador);
-                            }
-                            cargarDatos(jugadores);
-                        } else {
-                            for (int i = 0; i < personasNuevas; i++) {
-                                sc.nextLine();
-                                crearUsuario(jugadores, sc, numeroJugador);
-                            }
-                            cargarDatos(jugadores);
-                        }
-                        break;
-                    case 2:
-                        System.out.println("Hola 2");
-                        break;
-                    default:
-                        System.out.println("No es un número válido");
-                }
-                sc.close();
+                opcionesUsuario(sc, personasNuevas, personasTotal, jugadores);
             }
         } catch (InputMismatchException e) {
             System.out.println("No has introducido un número");
@@ -80,7 +54,7 @@ public class Main {
 
     public static void cargarDatos(List<Jugador> jugadores) {
         try {
-            String archivoCSV = "**//trabajoFinal//jugadores.csv";
+            String archivoCSV = "3er eval\\src\\Programacion\\ProgramacionJava\\trabajoFinal\\jugadores.csv";
 
             File archivo = new File(archivoCSV);
 
@@ -101,13 +75,62 @@ public class Main {
         }
     }
 
+    public static void borrarDatos(Scanner sc) {
+        int opcion;
+        System.out.println("Estas seguro");
+        System.out.println("(1) -> No");
+        System.out.println("(2) -> Si");
+        opcion = sc.nextInt();
+        switch (opcion) {
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static void opcionesUsuario(Scanner sc, int personasNuevas, int personasTotal,
+            List<Jugador> jugadores) {
+        int opcione = opciones(sc);
+        switch (opcione) {
+            case 1:
+                if (personasNuevas == personasTotal) {
+                    for (int i = 0; i < personasTotal; i++) {
+                        sc.nextLine();
+                        crearUsuario(jugadores, sc, i);
+                    }
+                    cargarDatos(jugadores);
+                } else {
+                    for (int i = 0; i < personasNuevas; i++) {
+                        sc.nextLine();
+                        crearUsuario(jugadores, sc, i);
+                    }
+                    cargarDatos(jugadores);
+                }
+                break;
+            case 2:
+                System.out.println("Hola 2");
+                break;
+            case 3:
+                borrarDatos(sc);
+            default:
+                System.out.println("No es un número válido");
+        }
+        sc.close();
+
+    }
+
     public static int opciones(Scanner sc) {
         int opcion;
 
-        System.out.println("Bienvenido al juego del prisionero");
         System.out.println("¿Tienes usuarios ya creado?");
         System.out.println("(1) -> No");
         System.out.println("(2) -> Si");
+        System.out.println("(3) -> Borrar los datos");
 
         opcion = sc.nextInt();
         sc.nextLine();
