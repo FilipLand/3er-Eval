@@ -45,9 +45,7 @@ public class Jugador {
         this.nivel = nivel;
     }
 
-    @Override
-    public String toString() {
-        return "Jugador [nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", Nivel=" + nivel + "]";
+    public String cambiarACsv() {
+        return nombre + ";" + apellido + ";" + edad + ";" + nivel;
     }
-
 }
