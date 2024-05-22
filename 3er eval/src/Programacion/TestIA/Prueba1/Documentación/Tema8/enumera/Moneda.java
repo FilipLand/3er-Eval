@@ -8,15 +8,15 @@ public enum Moneda {
     YEN("¥");
 
     // Atributos adicionales
-    private String simbolo;
+    private String simbolos;
 
     // Constructor
     private Moneda(String simbolo) {
-        this.simbolo = simbolo;
+        this.simbolos = simbolo;
     }
 
     // Getter del atributo adicional
     public String getSimbolo() {
-        return simbolo;
+        return simbolos;
     }
 }
