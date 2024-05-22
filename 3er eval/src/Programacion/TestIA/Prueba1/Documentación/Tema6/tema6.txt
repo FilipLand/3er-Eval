@@ -1,0 +1,140 @@
+REFERENCIA THIS
+        Dentro de un método de instancia de clase o un constructor, esta es una referencia al 
+        objeto actual. Puede hacer referencia a cualquier miembro del objeto actual.
+    El uso más habitual es para diferenciar variables con nombres repetidos u ocultas.
+
+STATIC
+    Usar static en atributos o métodos implica que ese elemento será compartido por todas
+    las instancias de la clase. En lugar de generarse un nuevo elemento en memoria cada 
+    vez que llamemos a la clase, este elemento estará una única vez en memoria para todos 
+    los usos de esa clase, habrá una única copia de él. Las clases estáticas son aquella
+    que no pueden ser instanciadas, y ello obliga a que todos sus miembros deben ser estáticos.
+
+    Características:
+
+        Una clase puede combinar atributos y métodos estáticos con otros que no lo son, ejemplo,
+            la clase String.
+        Un método static NO puede acceder a atributos de la clase que no sean static
+        Un método no static SÍ puede acceder a atributos static
+        Los métodos static NO pueden usar la referencia this, ya que este hace referencia 
+            a una instancia concreta de la clase. Tengamos en cuenta que 'this' nunca se 
+            podrá utilizar para hacer referencia a elementos estáticos, ya que se utiliza 
+            para referenciar elementos de una instancia (un objeto actual), es decir, es 
+            algo dinámico.
+        Si un método no usa los atributos de la classe, es candidato a ser estático.
+
+SUPER
+        Si this sirve para hacer referencia a la instancia actual del objeto, super sirve para hacer
+        lo propio con la clase padre de nuestro objeto (la clase de la se hace el extends), eso quiere
+        decir que nos permite acceso a los constructores, métodos y atributos de la clase de la que
+        hereda.
+
+    Una clase que hereda de otra, en sus constructores, siempre debe llamar en la primera línea a los
+    constructores de clase padre con super() o a otro de sus constructores con this() de forma que al
+    final siempre se llame a alguno de los constructores de la clase padre.
+
+    Si la clase padre tiene un constructor sin parámetros entonces no es necesario hacer la llamada con 
+    super() porque por defecto Java hace la llamada al constructor sin parámetros de la clase padre.
+
+4. POLIMORFISMO
+    El polimorfismo es una cualidad muy ventajosa que se refiere a que un elemento puede tomar varias
+    formas. En programación es un concepto muy relacionado a la herencia y que sólo tiene sentido en
+    los lenguajes de programación fuertemente tipados, como es Java. Cuando nos encontramos ante
+    lenguajes como php o javascript, que son débilmente tipados, este concepto pierde su valor. 
+    ¿Qué es un lenguaje fuertemente tipado? Aquel que al declarar una variable es necesario asignarle
+    siempre un tipo, o al declarar un objeto, le tiene que asignar siempre una clase.
+
+    Por ejemplo, cuando creamos:
+
+    Coche mama = new Coche();
+
+    NIVEL DE ACCESO
+    El nivel de acceso define la visibilidad de una clase, de sus variables y de sus métodos.
+
+    Tenemos los tipos de acceso siguientes:
+
+private, el más restrictivo:
+
+    Para clase: define una clase accessible, únicamente, per la clase donde está escrita.
+    Para métodos o variables: define un elemento que solo puede ser accedido dentro de la
+    misma clase. Ninguna otra clase sin importar la relación que tenga con ella, podrá tener 
+    acceso a ellos.
+
+protected:
+
+    Para clase: Define una clase accessible por las clases del mismo paquete y sus subclases.
+    Para métodos o variables: define un elemento que puede ser accedido dentro de la misma clase, 
+    por las clases del mismo paquete y las clases que heredan de esta.
+
+public, el menos restrictivo:
+
+    Para clase: define una clase accessible por cualquier otra clase del proyecto o por otras que 
+    importen el paquete.
+    Para métodos o variables: define un elemento que puede ser accedido desde cualquier clase, 
+    sin importar procedencia de esta.
+
+    No escribir nada, implica que usamos el nivel por default es la otra opción disponible e 
+    implica que la clase solo será accesible por otras clases definidas en el mismo paquete 
+    (clases amigas).
+
+HASHCODE
+    Sobreescriure el equals, implica sobreescriure el mètode hashCode, ja que els dos objectes 
+    iguals han de retornar el mateix codi hash.
+
+    El codi hash és un identificador enter de 32 bits, que s’assigna a l'objecte en el moment 
+    de la seua creació, el mètode hashCode retorna aquest valor.
+
+    Dos objectes iguals tenen el mateix codi hash, per tant, els criteris que s’apliquen en la
+    comparació dels dos objectes s’han d’aplicar en la creació dels seus codi hash.
+
+    En l’exemple del nombre complex, s’usa la part real i imaginària del nombre.
+
+ABSTRACT
+
+    Una clase abstracta es una clase de la que no se pueden crear instancias. Su utilidad consiste 
+    en permitir que otras clases deriven de ella. De esta forma, proporciona un modelo de referencia
+    a seguir a la vez que una serie de métodos de utilidad general.
+
+    Las clases abstractas se declaran empleando la palabra reservada abstract.
+
+    Una clase abstracta puede componerse de varios atributos y métodos pero debe tener, al menos,
+    un método abstracto (declarado también con la palabra reservada abstract en la cabecera). 
+    Los métodos abstractos no se implementan en el código de la clase abstracta pero las clases
+    descendientes de ésta han de implementarlos o volver a declararlos como abstractos 
+    (en cuyo caso la subclase también debe declararse como abstracta). En cualquier caso, 
+    ha de indicarse el tipo de dato que devuelve y el número y tipo de parámetros.
+
+INTERFACES
+    
+    Son un elemento que surge, en cierta medida porque en Java no existe la herencia múltiple,
+    por lo que solo es posible heredar de una única clase.
+
+    Una interfaz es una clase de la que no se pueden crear instancias. Su utilidad consiste en
+    permitir que otras clases implementen sus métodos. De esta forma, proporciona un protocolo
+    a seguir por las clases que la implementan.
+
+    Las interfaces se declaran empleando la palabra reservada interface.
+
+    Una interfaz puede estar compuesta de constantes y métodos únicamente. Los métodos no se 
+    implementan en el código de la interfaz, se declara únicamente su firma.
+
+    Un ejemplo que considero muy interesante para entender el concepto de interfaz,
+    se encuentra en la propia página de Oracle
+
+    Las interfaces:
+
+        Indican que hacer, pero no como hacerlo.
+            Todos los métodos de una interfaz son IMPLÍCITAMENTE ABSTRACTOS (public abstract),
+            no es necesario especificarlo en la declaración.
+        Todas las variables y atributos de una interfaz son IMPLÍCITAMENTE
+            CONSTANTES (public static final), no es necesario especificarlo en la declaración.
+        Una clase puede extender una clase y/o implementar muchas interfaces. Una interfaz puede
+         extender muchas interfaces. Con las interfaces no hay límite, recuérdalo.
+        "Igual EXTENDS igual. Distinto IMPLEMENTS distinto." Esto quiere decir que una clase 
+            extiende otra clase, pero una clase implementa una interfaz. De igual modo, una interfaz
+            extiende otra interfaz. Por último, una interfaz no puede heredar de una clase.
+            Las interfaces no pueden heredar de una clase.
+        El orden de las palabras clave cuando una clase extiende otra clase e implementa una o
+        varias interfaces es extends-implements. Si te paras a pensar, tiene lógica: primero 
+        colocas la única clase que se puede extender, y a continuación la lista ilimitada de 
+        interfaces que se implementen.

@@ -1,0 +1,31 @@
+Paso por valor: 
+los parámetros formales reciben una copia de los valores de los parámetros actuales.
+ Por tanto, si se realiza un cambio en ellos dentro de una función o procedimiento, 
+ no afectará al valor en el programa principal. Es decir, los valores formales ocupan 
+ una zona de memoria distinta a los actuales.
+
+Paso por referencia: 
+    lo que se pasa al subprograma es la dirección de memoria del parámetro actual. 
+    De esta forma la variable se comparte entre el programa y el subprograma y se puede modificar.
+    Es decir, parámetros formales y actuales ocupan la misma dirección de memoria.
+
+Librerías
+    La utilización de libreríasen programación facilita enormemente las tareas de desarrollo, 
+    ya que son un conjunto de funciones y/o procedimientos ya codificadas y testeadas previamente 
+    que permiten la reutilización de código y además liberan al programador de tareas de codificación 
+    simples, repetitivas o de bajo nivel.
+
+Recursividad
+    Dicho de forma sencilla, la recursividad se produce cuando una función o procedimiento se llama
+    a sí mismo. Es una técnica de programación que nos permite que un bloque de instrucciones se
+    ejecute n veces, reemplazando así, a las estructuras repetitivas. Una de las claves para 
+    saber que un problema podría resolverse usando recursividad es detectar los dos casos
+    siguientes:
+
+        El caso base es el caso al que toda función recursiva tiene que acabar llegando para
+         dar por resuelto el caso más simple del problema que queremos resolver. Si no 
+         definimos un caso base dentro de nuestra solución recursiva llamaremos a nuestra 
+         función infinitas veces hasta que acabemos con todos los recursos del sistema.
+        El caso recursivo, suele ser una función que es capaz de autoinvocarse. 
+         La clave de esta autoinvocación es que los elementos que le pasemos tendrán 
+         que ser menores que los del problema padre para que podamos llegar al caso base.
